@@ -1,0 +1,6 @@
+package-lock.json
+node_modules/*
+georel/package-lock.json
+georel/node_modules/*
+georel/tests/node_modules/*
+georel/tests/package-lock.json
