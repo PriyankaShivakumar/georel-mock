@@ -1,41 +1,47 @@
 {
-  "name": "georelations",
-  "description": "Application for Customer GeoRelation Processing",
-  "repository": "<Add your repository here>",
-  "license": "ISC",
-  "version": "1.0.0",
-  "engines": {
-    "node": "^14.7.0"
-  },
-  "files": [],
-  "dependencies": {
-    "@sap/cds": "^5",
-    "@sap/cloud-sdk-vdm-business-partner-service": "1.26.0",
-    "@sap/xb-msg-amqp-v100": "latest",
-    "@sap/xsenv": "latest",
-    "express": "^4.17.1"
-  },
-  "scripts": {
-    "start": "cds run",
-    "build": "cds build/all --clean",
-    "deploy": "cds deploy"
-  },
-  "cds": {
-    "requires": {
-      "db": {
-        "kind": "sqlite",
-        "credentials": {
-          "database": "sqlite.db"
+    "name": "georelations",
+    "description": "Application for Customer GeoRelation Processing",
+    "repository": "<Add your repository here>",
+    "license": "ISC",
+    "version": "1.0.0",
+    "engines": {
+        "node": "^14.7.0"
+    },
+    "files": [],
+    "dependencies": {
+        "@sap/cds": "^5",
+        "@sap/cloud-sdk-vdm-business-partner-service": "1.26.0",
+        "@sap/xb-msg-amqp-v100": "latest",
+        "@sap/xsenv": "latest",
+        "express": "^4.17.1"
+    },
+    "scripts": {
+        "start": "cds run",
+        "build": "cds build/all --clean",
+        "deploy": "cds deploy",
+        "test:integration": "mocha tests/test.js --timeout 15000 --exit"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "sqlite",
+                "credentials": {
+                    "database": "sqlite.db"
+                }
+            },
+            "messaging": {
+                "kind": "local-messaging",
+                "[production]": {
+                    "kind": "enterprise-messaging-shared"
+                }
+            }
         }
-      },
-      "messaging": {
-        "[production]": {
-          "kind": "enterprise-messaging-shared"
-        }
-      }
+    },
+    "devDependencies": {
+        "sqlite3": "^5.0.2",
+        "chai": "^4.3.4",
+        "chai-http": "^4.3.0",
+        "mocha": "^9.0.2",
+        "jest": "^27.2.3"
     }
-  },
-  "devDependencies": {
-    "sqlite3": "^5.0.2"
-  }
 }

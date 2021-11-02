@@ -1,6 +1,6 @@
 ---
 applications:
-- name: geo
+- name: geomain
   path: georel
   memory: 128M
   env:

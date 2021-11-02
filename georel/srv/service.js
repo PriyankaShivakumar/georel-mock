@@ -271,11 +271,13 @@ function _computeBackendUrl(bupaId) {
     let backendUrl = ''
 
     try {
-        const s4hRootUrl = JSON.parse(process.env.VCAP_SERVICES)['s4-hana-cloud'][0].credentials.URL //"https://my300497-api.s4hana.ondemand.com"
-        const path = 'sap/opu/odata/sap'
-        const api = 'API_BUSINESS_PARTNER'
+        //const s4hRootUrl = JSON.parse(process.env.VCAP_SERVICES)['s4-hana-cloud'][0].credentials.URL //"https://my300497-api.s4hana.ondemand.com"
+        //const path = 'sap/opu/odata/sap'
+        //const api = 'API_BUSINESS_PARTNER'
         const entitySet = 'A_BusinessPartner'
-        backendUrl = s4hRootUrl + '/' + path + '/' + api + '/' + entitySet + '(\'' + bupaId + '\')'
+            //backendUrl = s4hRootUrl + '/' + path + '/' + api + '/' + entitySet + '(\'' + bupaId + '\')'
+        backendUrl = 'https://geo-mocks.cfapps.sap.hana.ondemand.com/api-business-partner/' + entitySet + '(\'' + bupaId + '\')'
+        console.log(backendUrl);
     } catch (error) {
         console.error('   Failed to compute Backend URL. Not critical. Hence ignoring')
     }
