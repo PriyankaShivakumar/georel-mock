@@ -5,13 +5,15 @@ module.exports = async srv => {
     // Mock events for s4
     srv.after("UPDATE", "A_BusinessPartner", async data => {
         const payload = { KEY: [{ BUSINESSPARTNER: data.BusinessPartner }] };
-        await messaging.emit("sap/S4HANAOD/1908/ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Changed/v1", payload);
+        console.log("sap/georelations/1/ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Changed/v1");
+        await messaging.emit("sap/georelations/1/ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Changed/v1", payload);
         console.log('<< event emitted', payload);
     });
 
     srv.after("CREATE", "A_BusinessPartner", async data => {
         const payload = { KEY: [{ BUSINESSPARTNER: data.BusinessPartner }] };
-        await messaging.emit("sap/S4HANAOD/1908/ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Created/v1", payload);
+        console.log("sap/georelations/1/ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Created/v1");
+        await messaging.emit("sap/georelations/1/ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Created/v1", payload);
         console.log('<< event emitted', payload);
     });
 
